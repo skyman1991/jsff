@@ -9,11 +9,12 @@ float f(float x)
 	return yy;
 }
 
-float g(float x)
+float g(float _x)
 {
 	float gg;
+	float x = _x;
 
-	gg = x - x*x*x - 4*x*x + 10;
+	gg = sqrt(10-x*x*x)/2;
 	return gg;
 }
 
@@ -53,6 +54,5 @@ void Diedai(float _p0,int N,float tol)
 int main()
 {
 	Erfen(1.0,2.0,20,0.000005);
-	Diedai(1.01,200,0.000005);
-	return 0;
+	Diedai(1.01,100,0.000005);
 }
