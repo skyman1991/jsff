@@ -9,9 +9,9 @@ void input_A(float a[][MAX],int m,int n)
 	int i,j;
 	float temp;
 
-	printf("Please input juzhen A:\n");
+	printf("\nPlease input juzhen A:\n");
 	for(i = 1; i <= m; i++){
-		printf("\nline:%d ",i);
+		printf("line:%d ",i);
 		for(j = 1; j <= n; j++){
 			scanf("%f",&temp);
 			a[i][j] = temp;
@@ -23,7 +23,7 @@ void input_b(float *b,int n)
 {
 	int i;
 
-	printf("Please input Juzhen b:\n");
+	printf("\nPlease input Juzhen b:\n");
 	for(i = 1;i <= n;i++)
 	  scanf("%f",&b[i]);
 }
@@ -42,6 +42,15 @@ void LU_division(float a[][MAX],float l[][MAX],float u[][MAX],int n)
 {
 	int i,j,k,r;
 	float s1,s2;
+
+	for(i = 1; i <= 99; i++){       //inicial l and u
+		for(j = 1; j <= 99; j++){
+			l[i][j] = 0;
+			u[i][j] = 0;
+			if(i == j)       //对角线置1
+			  l[i][j] = 1;
+		}
+	}
 
 	for(i = 1; i <= n; i++){      //确定U的第一行和L的第一列
 		u[1][i] = a[1][i];
@@ -65,7 +74,7 @@ void LU_division(float a[][MAX],float l[][MAX],float u[][MAX],int n)
 		}
 	}
 	
-	printf("L:\n");
+	printf("\nL:\n");
 	printJuzhen(l,n,n);
 	printf("U:\n");
 	printJuzhen(u,n,n);
@@ -91,7 +100,7 @@ void get_x(float l[][MAX],float u[][MAX],float *b,float *x,int n)
 		}
 		x[i] = (y[i] + s2)/u[i][i];
 	}
-	printf("The answer is:\n");
+	printf("\nThe answer is:\n");
 	for(i = 1;i <= n;i++)
 	  printf("x[%d]: %f\n",i,x[i]);
 }
@@ -102,7 +111,7 @@ int main()
 	float A[MAX][MAX],L[MAX][MAX],U[MAX][MAX];
 	float b[MAX],x[MAX];
 	
-	printf("Please input n: ");
+	printf("\nPlease input n: ");
 	scanf("%d",&n);
 	input_A(A,n,n);
 	input_b(b,n);
